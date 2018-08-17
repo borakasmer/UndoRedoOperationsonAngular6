@@ -1,0 +1,7 @@
+<button pButton type="button" [disabled]="canUndo()" label="UNDO"
+    (click)="undoClick()" class="ui-button-rounded ui-button-success">
+    <span class="glyphicon glyphicon-backward"></span>
+</button>
+<button pButton type="button" [disabled]="canRedo()" label="REDO" (click)="redoClick()" class="ui-button-rounded  ui-button-warning">
+    <span class="glyphicon glyphicon-forward"></span>
+</button>

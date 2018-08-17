@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>İş Başvuru Kayıt Ekranı</h2>
+  </div>
+  
+  <navigate-console [modelPerson]="changedModel" (getdata)="getCurrentData($event)"></navigate-console>
+ <!--  <img src="/assets/Images/undo.png">
+  <img src="/assets/Images/redo.png"> -->
+  <table class="table" *ngIf="model">
+    <tbody>
+      <tr>
+        <td>
+          <label for="float-input">Username</label>
+        </td>
+        <td>
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText [(ngModel)]="model.Name" (ngModelChange)="isModelChange=true" (blur)="checkModel()">
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="float-input">Soyadınız:</label>
+        </td>
+        <td>
+          <input id="float-input" type="text" size="30" pInputText [(ngModel)]="model.Surname" (ngModelChange)="isModelChange=true" (blur)="checkModel()">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="float-input">Erkek mi?:</label>
+        </td>
+        <td>
+          <input type="checkbox" [(ngModel)]="model.IsMale" (ngModelChange)="checkModel(true)"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="float-input">Doğum Tarihi:</label>
+        </td>
+        <td>
+          <p-calendar [(ngModel)]="model.BirthDate" (ngModelChange)="checkModel(true)" [inline]="true" 
+          showOtherMonths="true" yearNavigator="true" yearRange="1960:2020" monthNavigator="true" showTime="true" hourFormat="24" showButtonBar="true" [locale]="tr"></p-calendar>
+        </td>
+      </tr>
+      <tr>
+        <td>            
+          <label for="float-input">Maaş Aralığ:</label>
+        </td>
+        <td>
+            <h3>[{{this.model.Salary[0] + '-' + this.model.Salary[1]}}]</h3>
+          <p-slider [(ngModel)]="model.Salary" [range]="true" [step]="1000" [min]="1000" [max]="20000" (onSlideEnd)="checkModel(true)"></p-slider>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
